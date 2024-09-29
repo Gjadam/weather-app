@@ -9,9 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        'primary': '#1c1c1c',
+        'placeholder': 'rgba(0,0,0,0.2)'
       },
+      borderWidth: {
+        1: "1px"
+      }
     },
   },
   plugins: [],
