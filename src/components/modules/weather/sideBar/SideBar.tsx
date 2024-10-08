@@ -3,23 +3,26 @@ import Image from 'next/image'
 // Icons
 import { PiCloudSunThin } from 'react-icons/pi'
 import { CiClock2 } from "react-icons/ci";
+import { GrGithub } from 'react-icons/gr'
 
-// Types
-import { WeatherT } from '../Weather'
+// Components
+import { WeatherT } from '../../../templates/index/Index'
 import KelvinIntoCelsius from '@/components/modules/kelvinIntoCelsius/KelvinIntoCelsius'
 import KeyValue from '../keyValue/KeyValue'
-import { GrGithub } from 'react-icons/gr'
-import Time from '../../../modules/time/Time';
-
+import Time from '../../time/Time';
+import SearchBox from '../searchBox/SearchBox';
 
 export default function SideBar({ id, main, name, weather, timezone }: WeatherT) {
-  
+
     return (
-        <div className=" flex flex-col justify-between items-center  w-96 h-full p-5 text-white backdrop-blur border-r-1 border-zinc-400 rounded-r-3xl ">
-            <div className=" group flex items-center select-none hover:text-sky-400 transition-all duration-500 ">
-                <h1 className=" group-hover:-translate-y-1.5  transition-all duration-300">Wea</h1>
-                <PiCloudSunThin className=" text-3xl  " />
-                <h1 className="group-hover:translate-y-1.5  transition-all duration-300">ther</h1>
+        <div className=" flex flex-col justify-between items-center  w-full lg:w-[50rem] h-full p-5 text-white backdrop-blur border-r-1 border-zinc-400 rounded-r-3xl transition-all duration-300 ">
+            <div className=" flex items-center gap-5 flex-col w-full">
+                <div className=" group flex items-center select-none hover:text-sky-400 transition-all duration-500 ">
+                    <h1 className=" group-hover:-translate-y-1.5  transition-all duration-300">Wea</h1>
+                    <PiCloudSunThin className=" text-3xl  " />
+                    <h1 className="group-hover:translate-y-1.5  transition-all duration-300">ther</h1>
+                </div>
+               <SearchBox/>
             </div>
             {
                 id ? (
@@ -76,7 +79,7 @@ export default function SideBar({ id, main, name, weather, timezone }: WeatherT)
                 )
             }
             <div className=" flex flex-col items-center gap-3">
-                <p className=" text-sm">Welcome to our weather website! We provide accurate, real-time weather forecasts including temperature, humidity, wind speed, and precipitation chances for various regions.</p>
+                <p className=" text-sm text-center">Welcome to our weather website! We provide accurate, real-time weather forecasts including temperature, humidity, wind speed, and precipitation chances for various regions.</p>
                 <div className=" border-t-1 w-full ">
                     <span className="">
                         <a href="https://github.com/Gjadam">

@@ -1,5 +1,6 @@
 import { ReactNode } from "react"
 
+// Types
 type KeyValueProps = {
     weatherKey: string
     weatherValue?: ReactNode
