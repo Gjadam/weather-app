@@ -1,24 +1,11 @@
-'use client'
-import { useSearchParams } from "next/navigation"
-
-// Components
-import Weather from "@/components/modules/weather/Weather"
-
-// Hooks
-import useGetWeather from "@/Hooks/useGetWeather"
-
+import dynamic from 'next/dynamic'
+ 
+const SearchTemplateWithNoSSR = dynamic(
+  () => import('../../components/templates/search/Search'),
+  { ssr: false }
+)
 export default function page() {
-    const searchParams = useSearchParams()
-
-    const searchValue = searchParams.get('q')
-
-    const { searchData } = useGetWeather(searchValue)
-
-
-    const position: [number, number] = [searchData?.coord.lat, searchData?.coord.lon];
-
-
     return (
-        <Weather weather={searchData} position={position}/>
-    )
+          <SearchTemplateWithNoSSR />
+      )
 }

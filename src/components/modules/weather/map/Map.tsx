@@ -38,7 +38,7 @@ const Map = ({ position }: MapProps) => {
             </div>
 
         ) : (
-            <div className=" self-end w-80 h-80 bg-placeholder rounded animate-pulse"></div>
+            <div className=" self-end w-full h-full bg-placeholder rounded animate-pulse"></div>
         )
     );
 };
