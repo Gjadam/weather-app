@@ -49,8 +49,8 @@ export type WeatherT = {
 }
 
 export type LocationT = {
-    lat: number
-    lon: number
+    latitude: number
+    longitude: number
 }
 
 export default function Index() {
@@ -74,20 +74,20 @@ export default function Index() {
 
 
     const [location, setLocation] = useState<LocationT>({
-        lat: 0,
-        lon: 0
+        latitude: 0,
+        longitude: 0
     })
 
-    const position: [number, number] = [location.lat, location.lon];
+    const position: [number, number] = [location.latitude, location.longitude];
 
     useEffect(() => {
 
         const getUserLocation = async (ipAddress: string) => {
-            const res = await fetch(`http://ip-api.com/json/${ipAddress}`)
+            const res = await fetch(`https://ipapi.co/${ipAddress}/json/`)
             if (res.status === 200) {
                 const data = await res.json()
 
-                if (data.countryCode === "IR") {
+                if (data.country_code === "IR") {
                     setDisconnected(true)
 
                 } else {
@@ -97,8 +97,8 @@ export default function Index() {
             }
         }
 
-        const getWeatherData = async (weatherData: { lat: number, lon: number }) => {
-            const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${weatherData.lat}&lon=${weatherData.lon}&appid=${weatherApiKey}`)
+        const getWeatherData = async (weatherData: { latitude: number, longitude: number }) => {
+            const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${weatherData.latitude}&lon=${weatherData.longitude}&appid=${weatherApiKey}`)
 
             if (res.status === 200) {
                 const data = await res.json()
@@ -110,7 +110,6 @@ export default function Index() {
             try {
 
                 const ipResponse = await fetch(`https://api.ipify.org?format=json`)
-                console.log(ipResponse);
 
                 if (ipResponse.status === 200) {
                     const data = await ipResponse.json()
